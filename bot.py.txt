@@ -5,21 +5,10 @@ from telegram import Bot  # Conecta nuestro bot con Telegram
 
 TELEGRAM_TOKEN = "7309264886:AAEUoBIge4vk9KRDwipvvLd2G6LfIbnryZo"
 CHAT_ID = "2698687147"
-RAPIDAPI_KEY = "import http.client
-
-conn = http.client.HTTPSConnection("tiktok-video-no-watermark2.p.rapidapi.com")
-
-headers = {
-    'x-rapidapi-key': "bc0c302a76mshec261e85d04d4bep1392d9jsn35e99710ccac",
-    'x-rapidapi-host': "tiktok-video-no-watermark2.p.rapidapi.com"
-}
-
-conn.request("GET", "/comment/reply?video_id=7093219391759764782&comment_id=7093219663211053829&count=10&cursor=0", headers=headers)
-
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))"
+RAPIDAPI_KEY = "curl --request GET \
+	--url 'https://tiktok-video-no-watermark2.p.rapidapi.com/comment/reply?video_id=7093219391759764782&comment_id=7093219663211053829&count=10&cursor=0' \
+	--header 'x-rapidapi-host: tiktok-video-no-watermark2.p.rapidapi.com' \
+	--header 'x-rapidapi-key: bc0c302a76mshec261e85d04d4bep1392d9jsn35e99710ccac'"
 TIKTOK_USERNAME = "león.rey.business"
 
 bot = Bot(token=TELEGRAM_TOKEN)  # Conectar el bot de Telegram
