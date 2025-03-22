@@ -9,7 +9,7 @@ RAPIDAPI_KEY = "curl --request GET \
 	--url 'https://tiktok-video-no-watermark2.p.rapidapi.com/comment/reply?video_id=7093219391759764782&comment_id=7093219663211053829&count=10&cursor=0' \
 	--header 'x-rapidapi-host: tiktok-video-no-watermark2.p.rapidapi.com' \
 	--header 'x-rapidapi-key: bc0c302a76mshec261e85d04d4bep1392d9jsn35e99710ccac'"
-TIKTOK_USERNAME = "león.rey.business"
+TIKTOK_USERNAME = "leon.rey.business"
 
 bot = Bot(token=TELEGRAM_TOKEN)  # Conectar el bot de Telegram
 ultimo_video = None  # Guardará el último video publicado
