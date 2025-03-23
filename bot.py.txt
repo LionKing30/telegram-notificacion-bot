@@ -14,7 +14,8 @@ ultimo_video = None  # Guardará el último video publicado
 def obtener_ultimo_video():
     """Consulta la API para obtener el último video de un usuario de TikTok."""
     global ultimo_video
-    url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+    url = url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+
     
     headers = {
         "X-RapidAPI-Key": RAPIDAPI_KEY,
@@ -38,7 +39,8 @@ def obtener_ultimo_video():
 
 def verificar_live():
     """Consulta la API para ver si el usuario está en vivo."""
-    url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+    url = url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+
     
     headers = {
         "X-RapidAPI-Key": RAPIDAPI_KEY,
