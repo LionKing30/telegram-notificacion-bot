@@ -4,7 +4,7 @@ import time  # Permite que el bot espere entre verificaciones
 from telegram import Bot  # Conecta nuestro bot con Telegram
 
 TELEGRAM_TOKEN = "7309264886:AAEUoBIge4vk9KRDwipvvLd2G6LfIbnryZo"
-CHAT_ID = 2698687147
+CHAT_ID = -2698687147
 RAPIDAPI_KEY = "bc0c302a76mshec261e85d04d4bep1392d9jsn35e99710ccac"
 TIKTOK_USERNAME = "leon.rey.business"
 
