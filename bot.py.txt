@@ -1,25 +1,24 @@
-import requests  # Permite obtener información de TikTok
-import schedule  # Nos ayuda a programar tareas automáticas
-import time  # Permite que el bot espere entre verificaciones
-from telegram import Bot  # Conecta nuestro bot con Telegram
+import requests
+import schedule
+import time
+from telegram import Bot
 
 TELEGRAM_TOKEN = "7309264886:AAEUoBIge4vk9KRDwipvvLd2G6LfIbnryZo"
 CHAT_ID = -2698687147
 RAPIDAPI_KEY = "bc0c302a76mshec261e85d04d4bep1392d9jsn35e99710ccac"
 TIKTOK_USERNAME = "lion.king.business"
 
-bot = Bot(token=TELEGRAM_TOKEN)  # Conectar el bot de Telegram
-ultimo_video = None  # Guardará el último video publicado
+bot = Bot(token=TELEGRAM_TOKEN)
+ultimo_video = None
 
 def obtener_ultimo_video():
     """Consulta la API para obtener el último video de un usuario de TikTok."""
     global ultimo_video
-    url = url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+    url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
 
-    
     headers = {
         "X-RapidAPI-Key": RAPIDAPI_KEY,
-        "X-RapidAPI-Host": "tiktok-video-no-watermark1.p.rapidapi.com"
+        "X-RapidAPI-Host": "tiktok-video-no-watermark2.p.rapidapi.com"
     }
 
     response = requests.get(url, headers=headers)  # Hacemos la solicitud a TikTok
@@ -39,29 +38,15 @@ def obtener_ultimo_video():
 
 def verificar_live():
     """Consulta la API para ver si el usuario está en vivo."""
-    url = url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts?unique_id={TIKTOK_USERNAME}&count=1"
+    url = f"https://tiktok-video-no-watermark2.p.rapidapi.com/user/live?unique_id={TIKTOK_USERNAME}"
 
-    
     headers = {
         "X-RapidAPI-Key": RAPIDAPI_KEY,
-        "X-RapidAPI-Host": "tiktok-video-no-watermark1.p.rapidapi.com"
+        "X-RapidAPI-Host": "tiktok-video-no-watermark2.p.rapidapi.com"
     }
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
         data = response.json()
-        if data["is_live"]:
-            live_url = data["live_url"]
-            mensaje = f"🚨 ¡@{TIKTOK_USERNAME} está en vivo en TikTok! 📺\n🔗 {live_url}"
-            bot.send_message(chat_id=CHAT_ID, text=mensaje)
-    else:
-        print("Error al verificar live:", response.text)
-
-# 🔹 Programamos las verificaciones cada 5 minutos
-schedule.every(5).minutes.do(obtener_ultimo_video)
-schedule.every(5).minutes.do(verificar_live)
-
-# 🔹 Bucle infinito para ejecutar las tareas programadas
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+        if data.get("is_live"):  # Verificar correctamente si está en vivo
+            live_url = data.get("live_url", "No disponible")  # Evita errores si no hay URL
